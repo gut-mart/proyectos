@@ -33,7 +33,6 @@ section .text
 
 _start:
     ; 1. ABRIR / CREAR EL ARCHIVO
-    ; Usaremos la función file_open de tu librería lib_file.asm
     mov rdi, nombre_archivo
     mov rsi, O_CREAT | O_WRONLY  ; Crear si no existe + Modo escritura
     mov rdx, 420                 ; Permisos 0644 (Lectura/Escritura para el dueño)
@@ -44,17 +43,15 @@ _start:
     jl error_archivo
     
     ; Guardamos el File Descriptor devuelto por el sistema
-    mov r12, rax                 ; Usamos R12 porque es un registro seguro (callee-saved)
+    mov r12, rax                 ; Usamos R12 porque es un registro seguro
 
     ; 2. ESCRIBIR EN EL ARCHIVO
-    ; Usaremos la función file_write de tu librería
     mov rdi, r12                 ; Pasamos el File Descriptor
     mov rsi, mensaje             ; Puntero al texto a escribir
     mov rdx, len_mensaje         ; Cantidad de bytes a escribir
     call file_write
 
     ; 3. CERRAR EL ARCHIVO
-    ; Usaremos la función file_close de tu librería
     mov rdi, r12                 ; Pasamos el File Descriptor
     call file_close
 
@@ -69,4 +66,4 @@ error_archivo:
     mov rdi, msg_error
     call print_string
     call print_nl
-    sys_exit 1                   ; Salir con código 
+    sys_exit 1                   ; Salir con código de error
