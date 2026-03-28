@@ -1,4 +1,4 @@
-ROOT_DIR = /home/isidro/Datos/nasm
+ROOT_DIR = ../../..
 PROJECT_SRC = proyectos/monitor/lib_graph_get_info_screen/main.asm
 
 all:
