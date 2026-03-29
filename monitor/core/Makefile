@@ -1,5 +1,6 @@
 ROOT_DIR = ../../..
-PROJECT_SRC = proyectos/monitor/lib_fb_core/main.asm
+PROJECT_SRC = proyectos/monitor/core/main.asm
+
 
 all:
 	@$(MAKE) --no-print-directory -C $(ROOT_DIR) SRC=$(PROJECT_SRC)
